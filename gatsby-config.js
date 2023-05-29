@@ -1,6 +1,11 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `My Gatsby Site-2`,
@@ -46,13 +51,13 @@ module.exports = {
   {
     resolve: '@directus/gatsby-source-directus',
     options: {
-      url: `https://superloop-cms1.rokt.dev/`, // Fill with your Directus instance address
+      url: process.env.DIRECTUS_URL, // Fill with your Directus instance address
       auth: {
         // token: 'my_secret_token', // You can use a static token from an user
 
         // Or you can use the credentials of an user
-        email: "davin.mcdonald@rocketlab.com.au",
-        password: "DavCorp6969",
+        email: process.env.DIRECTUS_USER,
+        password: process.env.DIRECTUS_PASSWORD,
       },
     },
   }
