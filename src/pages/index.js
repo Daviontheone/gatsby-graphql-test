@@ -1,4 +1,6 @@
 import * as React from "react"
+import { useStaticQuery, graphql } from 'gatsby';
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const pageStyles = {
   color: "#232129",
@@ -123,7 +125,12 @@ const links = [
   },
 ]
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
+
+  // const image = getImage(resiPageData.sectionResiLanding.sections[0].cta[0].icon)
+
+  console.log('resiPageData', data);
+
   return (
     <main style={pageStyles}>
       <h1 style={headingStyles}>
@@ -174,3 +181,34 @@ const IndexPage = () => {
 export default IndexPage
 
 export const Head = () => <title>Home Page</title>
+
+export const resiPageData = graphql`
+    query PageData {
+      sectionResiLanding {
+        banner_leadtext
+        banner_sub_leadtext
+        directusId
+        id
+        route
+        sourceInstanceName
+        title
+        sections {
+          id
+          section_key
+          show_subtitle
+          title
+          cta {
+            content
+            icon
+            id
+            image
+            sections_residential_id
+            show_button
+            title
+            to
+          }
+        }
+      }
+    }
+
+  `;
