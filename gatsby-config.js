@@ -18,11 +18,10 @@ module.exports = {
       "icon": "src/images/icon.png"
     }
   }, "gatsby-plugin-mdx", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-    resolve: 'gatsby-source-remote-file',
+    resolve: 'gatsby-source-filesystem',
     options: {
       "name": "images",
-      "url": "https://superloop-cms1.rokt.dev/",
-      collections: ['images'],
+      "path": "./src/images/"
     },
     __key: "images"
   }, {
@@ -34,20 +33,20 @@ module.exports = {
     __key: "pages",
     
   },
-  {
-    resolve: 'gatsby-source-remote-file',
-    options: {
-      url: 'https://superloop-cms1.rokt.dev/slp-api/static-file/1-residential.json',
-      name: 'residential-landing',
-    },
-  },
-  {
-    resolve: 'gatsby-source-remote-file',
-    options: {
-      url: 'https://superloop-cms1.rokt.dev/slp-api/static-file/2-residential.json',
-      name: 'residential-nbn',
-    },
-  },
+  // {
+  //   resolve: 'gatsby-source-remote-file',
+  //   options: {
+  //     url: 'https://superloop-cms1.rokt.dev/slp-api/static-file/1-residential.json',
+  //     name: 'residential-landing',
+  //   },
+  // },
+  // {
+  //   resolve: 'gatsby-source-remote-file',
+  //   options: {
+  //     url: 'https://superloop-cms1.rokt.dev/slp-api/static-file/2-residential.json',
+  //     name: 'residential-nbn',
+  //   },
+  // },
   {
     resolve: '@directus/gatsby-source-directus',
     options: {

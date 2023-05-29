@@ -183,32 +183,43 @@ export default IndexPage
 export const Head = () => <title>Home Page</title>
 
 export const resiPageData = graphql`
-    query PageData {
-      sectionResiLanding {
-        banner_leadtext
-        banner_sub_leadtext
-        directusId
+  query {
+    directus {
+      pages_residential {
         id
-        route
-        sourceInstanceName
         title
         sections {
-          id
-          section_key
-          show_subtitle
-          title
-          cta {
-            content
-            icon
-            id
-            image
-            sections_residential_id
-            show_button
+          sections_residential_id {
+            leadtext
+            section_key
+            subtitle
             title
-            to
+            title_richtext
+            component {
+              item {
+                ... on DirectusData_call_to_action_residential {
+                  id
+                  icon {
+                    icon {
+                      imageFile {
+                        childImageSharp {
+                          gatsbyImageData(width: 200)
+                        }
+                      }
+                      id
+                    }
+                  }
+                  button_link
+                  button_text
+                  content
+                  title
+                  to
+                }
+              }
+            }
           }
         }
       }
     }
-
-  `;
+  }
+`;
